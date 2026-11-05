@@ -1,27 +1,21 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BeneficiarioEditar } from './components/BeneficiarioEditar';
 import { BeneficiarioForm } from './components/BeneficiarioForm';
 import { BeneficiarioList } from './components/BeneficiarioList';
-
-function Listagem() {
-  const { state } = useLocation();
-  return (
-    <>
-      {state?.sucesso && <p role="status">{state.sucesso}</p>}
-      <BeneficiarioList />
-    </>
-  );
-}
+import { Layout } from './components/Layout';
+import { NaoEncontrado } from './components/NaoEncontrado';
 
 function App() {
   return (
     <BrowserRouter>
-      <main>
-        <h1>SocialConnect - Beneficiários</h1>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Listagem />} />
+          <Route path="/" element={<BeneficiarioList />} />
           <Route path="/beneficiarios/novo" element={<BeneficiarioForm />} />
+          <Route path="/beneficiarios/:id/editar" element={<BeneficiarioEditar />} />
+          <Route path="*" element={<NaoEncontrado />} />
         </Routes>
-      </main>
+      </Layout>
     </BrowserRouter>
   );
 }

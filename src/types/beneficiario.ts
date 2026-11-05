@@ -20,10 +20,10 @@ export interface Page<T> {
   };
 }
 
-export interface BeneficiarioRequest {
-  nome: string;
-  cpf: string;
-  telefone?: string;
-  endereco?: string;
-  situacaoVulnerabilidade?: string;
+// Corpo de erro da API (RFC 7807, ver ProblemDetail.java)
+export interface ProblemDetail {
+  title: string;
+  status: number;
+  detail: string;
+  errors?: { field: string; message: string }[];
 }
