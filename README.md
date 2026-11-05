@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# SocialConnect Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Front-end em React + TypeScript da [SocialConnect API](https://github.com/MuriloZague/socialconnect-api-aulas).
 
-Currently, two official plugins are available:
+**Disciplina:** ITE005 — Tópicos Especiais em Sistemas para Internet III
+**Stack:** React 19 · TypeScript · Vite · Axios · React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Como rodar
 
-## React Compiler
+### Pré-requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 24 e npm
+- A API no ar em `http://localhost:8080`, em uma versão com o `CorsConfig` (branch `feat/aula09-cors` da API)
 
-## Expanding the Oxlint configuration
+### Passos
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+A aplicação abre em http://localhost:5173. A API só aceita essa origem, então mantenha a porta 5173.
+
+Para usar outro endereço de API, copie `.env.example` para `.env` e altere `VITE_API_URL`.
+
+## Estrutura
+
+```
+src/
+├── components/   # BeneficiarioList, BeneficiarioForm
+├── services/     # chamadas à API (Axios)
+├── types/        # interfaces dos DTOs
+└── App.tsx       # rotas
+```
+
+## Uso de IA
+
+O registro de uso de IA generativa está em [`AI_USAGE.md`](AI_USAGE.md).
